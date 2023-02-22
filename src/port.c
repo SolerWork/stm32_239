@@ -1,0 +1,28 @@
+#include "stm32f3xx.h"
+#include "port.h"
+
+void init_port(){
+    RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+    RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
+    RCC->AHBENR |= RCC_AHBENR_GPIOEEN;
+
+    GPIOA->MODER &= ~GPIO_MODER_MODER5;
+    GPIOA->MODER |= (GPIO_MODER_MODER5_1 | GPIO_MODER_MODER5_0);
+
+    GPIOB->MODER &= ~GPIO_MODER_MODER13;
+    GPIOB->MODER |= (GPIO_MODER_MODER13_1 | GPIO_MODER_MODER13_0);
+
+    GPIOE->MODER &= ~GPIO_MODER_MODER9;
+    GPIOE->MODER |= GPIO_MODER_MODER9_0;
+
+    GPIOE->MODER &= ~GPIO_MODER_MODER13;
+    GPIOE->MODER |= GPIO_MODER_MODER13_0;
+      
+}
+
+
+void delay (uint32_t i) {
+
+     while (i--);
+
+}
